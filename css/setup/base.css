@@ -1,0 +1,25 @@
+html {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Arial", "Helvetica", sans-serif;
+  background: -webkit-linear-gradient(90deg, #72db70, #dbd870, #db7070);
+  background: linear-gradient(90deg, #72db70, #dbd870, #db7070);
+  background-position: center;
+  background-size: cover;
+}
+
+*,
+*::after,
+*::before {
+
+  box-sizing: inherit;
+}
+
+
+a {
+  /* берет цвет родителя - обычный черняй */
+  color: currentColor;
+}
