@@ -3,7 +3,9 @@ const btnOpenPopupForm = document.querySelector('#add'); // кнопка доб�
 
 const formAddCat = document.querySelector('#popup-form-cat');
 const popupAddCat = new Popup('popup-add-cats');
+popupAddCat.setEventListener();
 //console.log({ popupAddCat });
+
 
 
 // Импортируем котов из массива
