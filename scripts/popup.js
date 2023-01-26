@@ -11,4 +11,14 @@ class Popup {
   close() {
     this.popup.classList.remove('popup_active');
   }
+  setEventListener() {
+    this.popup.addEventListener('click', (evt) => {
+      if (
+        evt.target.classList.contains(this._className) ||
+        evt.target.closest('.popup__close')
+      ) {
+        this.close()
+      }
+    })
+  }
 }

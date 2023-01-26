@@ -12,21 +12,24 @@ class Card {
     this._selectorTemplate = selectorTemplate;
   }
 
-  _getTemplate() {  // получаем шаблон в виде DOM узла
-    return document.querySelector(this._selectorTemplate).content.querySelector('.card');
-    // документ фрагмент -  это легковесная версия ноды типа элемент. 
+  _getTemplate() {  // находим шаблон карточки кота получаем его в виде DOM узла
+    const elem = document.querySelector(this._selectorTemplate).content.querySelector('.card');
+    // документ фрагмент -  легковесная версия ноды типа элемент. 
+    return elem;
   }
   getElement() {
-    this.element = this._getTemplate().cloneNode(true);
-    const cardTitle = this.element.querySelector('.card__name');
-    const cardImage = this.element.querySelector('.card__image');
-    const cardLike = this.element.querySelector('.card__like');
+    this.element = this._getTemplate().cloneNode(true); // ловим шаблон
+    const cardTitle = this.element.querySelector('.card__name'); // название карточки имя кота
+    const cardImage = this.element.querySelector('.card__image'); // фото кота ссылка на файл
+    const cardLike = this.element.querySelector('.card__like'); // лайк на карточке кота
+
+    // снимаем лайк, если favorit: false
 
     if (!this._data.favorite) {
       cardLike.remove();
     }
 
-    cardTitle.textContent = this._data.name ?? 'Barsik';
+    cardTitle.textContent = this._data.name ?? 'Barsik'; // нулевое слияние, если в объекте отсутствует имя кота
     cardImage.src = this._data.image;
     return this.element;
   }
