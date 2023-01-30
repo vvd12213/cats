@@ -1,4 +1,4 @@
-const cats = [
+ const cats = [
     {
         "name": "Сидор",
         "image": "https://www.friendforpet.ru/api/sites/default/files/2022-01/064AEBCB-45EC-4CE7-AB13-C65F10F00B7B.jpeg",
@@ -8,7 +8,7 @@ const cats = [
         "description": "Прилично воспитан, но ворует сосиски",
         "id": 2
     },
-    {
+  /*  {
         "name": "Петя",
         "image": "https://www.friendforpet.ru/api/sites/default/files/2022-01/_DM34706.JPG",
         "age": 1,
@@ -70,5 +70,5 @@ const cats = [
         "favorite": true,
         "description": "Деловой излишне. На днях пытался вытащить из сумки леща",
         "id": 9
-    }
+    }*/
 ] 

@@ -16,59 +16,57 @@ const configApi = {
 class Api {
   constructor(config) {
     this._url = config.url;
-
     this._headers = config.headers;
+  }
+  _onResponse(res) {
+    return res.ok ? res.json() : Promise.reject({ ...res, message: 'error' });
+    
   }
   getAllCats() {
     /// отобразить всех котиков
     return fetch(`${this._url}/show`, {
       method: 'GET',
-    });
+    }).then(this._onResponse);
   }
   getAllCatsId() {
     /// отобразить все возможные айди котиков
     return fetch(`${this._url}/ids`, {
       method: 'GET',
-    });
+    }).then(this._onResponse);
   }
   getCatById(id) {
     /// отобразить конкретного котика
     return fetch(`${this._url}/show/${id}`, {
       method: 'GET',
-    });
+    }).then(this._onResponse);
   }
   addNewCat(body) {
-    /// добавить нового кота
-    console.log(`${this._url}`);
     return fetch(`${this._url}/add`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify(body),
-    });
-
+    }).then(this._onResponse);
   }
   updateCatById(id, data) {
-    /// обновить данные кота
     return fetch(`${this._url}/update/${id}`, {
       method: 'PUT',
       headers: this._headers,
       body: JSON.stringify(data),
-    });
-
+    }).then(this._onResponse);
   }
   deleteCatById(id) {
     /// удалить конкретного котика по айди
     return fetch(`${this._url}/delete/${id}`, {
       method: 'DELETE',
-    });
+    }).then(this._onResponse);
   }
 }
 
 const api = new Api(configApi);
-//console.log(api);
+// console.log(api);
 
 
-const newCat = {
+/* const newCat = {
   id: 167369103098,
   name: 'Matroskin',
   favorite: true,
@@ -76,16 +74,16 @@ const newCat = {
   age: 10,
   description: 'ласковый и пушистый котяра',
   image: 'https://http.cat/100',
-};
+}; */
 /* const newCatUpdated = {
    id: 1673690003098,
    name: 'MotrosknUpdated',
    image: 'https://http.cat/100',
  };*/
 
-console.log(api.getAllCats()); //Promise все коты
+//console.log(api.getAllCats()); //Promise все коты
 //api.getAllCatsId();
 //api.getCatById(167369103098);
 //api.addNewCat(newCat)
-api.updateCatById(167369103098, newCat) // кот добавился в мой репозитарий
+//api.updateCatById(167369103098, newCat) // кот добавился в мой репозитарий
 //api.deleteCatById(167369103098);

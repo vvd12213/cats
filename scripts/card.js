@@ -1,5 +1,5 @@
-const card = document.querySelector('#tmp-card');
-const template = document.querySelector('#card-template').content;
+//const card = document.querySelector('#tmp-card');
+//const template = document.querySelector('#card-template').content;
 
 //console.log({ card });
 //console.log({ template });
@@ -8,9 +8,11 @@ const template = document.querySelector('#card-template').content;
 
 class Card {
   constructor(dataCat, selectorTemplate) {
+   // console.log(dataCat);
     this._data = dataCat;
     this._selectorTemplate = selectorTemplate;
   }
+  
 
   _getTemplate() {  // находим шаблон карточки кота получаем его в виде DOM узла
     const elem = document.querySelector(this._selectorTemplate).content.querySelector('.card');
@@ -22,32 +24,19 @@ class Card {
     const cardTitle = this.element.querySelector('.card__name'); // название карточки имя кота
     const cardImage = this.element.querySelector('.card__image'); // фото кота ссылка на файл
     const cardLike = this.element.querySelector('.card__like'); // лайк на карточке кота
-
-    // снимаем лайк, если favorit: false
+    const cardDelete = this.element.querySelector('.card__delete'); // удаление карточки кота
+    //cardDelete.classList.add(`${this._data.id}`);
 
     if (!this._data.favorite) {
       cardLike.remove();
     }
 
-    cardTitle.textContent = this._data.name ?? 'Barsik'; // нулевое слияние, если в объекте отсутствует имя кота
-    cardImage.src = this._data.image;
+    cardTitle.textContent = this._data.name ?? 'Barsik';
+    cardImage.src =
+      this._data.image ||
+      'https://rickandmortyapi.com/api/character/avatar/1.jpeg';
     return this.element;
   }
 }
 
-// const card = new Card(cats[0], '#card-template');
-
-// card.getElement();
-
-// console.log({ card });
-
-
-// {
-//   "name": "Базиль",
-//   "image": "https://www.friendforpet.ru/api/sites/default/files/2022-01/064AEBCB-45EC-4CE7-AB13-C65F10F00B7B.jpeg",
-//   "age": 2,
-//   "rate": 10,
-//   "favorite": false,
-//   "description": "Внимательный, активный и ласковый. Любит играть, катать мяч, и мурчать на пледе рядом с людьми! Прилично воспитан, приучен к лотку. Вакцинирован, имеет ветеринарный паспорт.",
-//   "id": 2
-// },
+const card = new Card(cats[0], '#card-template');
